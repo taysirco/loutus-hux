@@ -153,7 +153,9 @@ function calculateSize(height, weight) {
         size = 'L';
     } else if (weight > 85 && weight <= 98) {
         size = 'XL';
-    } else if (weight > 98) {
+    } else if (weight > 98 && weight <= 112) {
+        size = '2XL';
+    } else if (weight > 112) {
         size = '2XL';
     } else {
         size = 'M'; // Default to M for weights below 65
