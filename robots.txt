@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /contact.html
+Allow: /privacy-policy.html
+Allow: /terms.html
+Allow: /return-policy.html
+Allow: /confirm.html
+
+Disallow: /admin.html
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /*.patch
+Disallow: /*.json
+Disallow: /.firebase/
+
+Sitemap: https://summer-tshirt-orders.web.app/sitemap.xml 

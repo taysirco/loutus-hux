@@ -1,0 +1,22 @@
+/**
+ * تصحيح المسافة بين الهيدر وقسم الهيرو
+ * تم إنشاؤه: 2025-04-08
+ */
+
+/* إزالة المساحة البيضاء الفارغة بين الهيدر والهيرو */
+.hero-section {
+    padding-top: 0 !important; /* إلغاء المساحة العلوية تماماً */
+}
+
+/* تعديلات تتناسب مع شاشات الموبايل والأجهزة المتوسطة */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding-top: 0 !important;
+    }
+}

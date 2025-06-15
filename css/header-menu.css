@@ -1,0 +1,219 @@
+/**
+ * تنسيقات خاصة بتحسين وتطوير القائمة الرئيسية في الهيدر
+ */
+
+/* تنسيقات عامة للقائمة */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.main-header.scrolled {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.98);
+}
+
+/* تنسيق زر القائمة */
+.mobile-menu-toggle {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    outline: none !important;
+}
+
+.mobile-menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+.mobile-menu-toggle i {
+    transition: all 0.3s ease;
+}
+
+/* تنسيقات القائمة المتنقلة */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    padding: 80px 0 30px;
+    overflow-y: auto;
+    text-align: right;
+    direction: rtl;
+}
+
+.mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0));
+    z-index: 1;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+/* إضافة خلفية مظللة عند فتح القائمة */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+body.menu-open::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* تنسيق قائمة العناصر */
+.mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav-item {
+    position: relative;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-nav-item.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 15px 25px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.mobile-nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 0;
+    background: linear-gradient(to bottom, #ff6f61, #ff9871);
+    transition: height 0.3s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+    color: #ff6f61;
+}
+
+.mobile-nav-link:hover::before,
+.mobile-nav-link.active::before {
+    height: 100%;
+}
+
+/* تنسيق زر الطلب في القائمة المتنقلة */
+.mobile-order-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto 0;
+    width: 80%;
+    padding: 12px 15px;
+    background: linear-gradient(to right, #ff6f61, #ff9871);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 111, 97, 0.3);
+}
+
+.mobile-order-btn i {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.mobile-order-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 111, 97, 0.4);
+}
+
+.mobile-order-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* تنسيق زر الطلب في الهيدر */
+.header-order-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.header-order-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%) rotate(45deg);
+    transition: transform 0.6s ease;
+}
+
+.header-order-btn:hover::before {
+    transform: translateX(100%) rotate(45deg);
+}
+
+/* منع التمرير عند فتح القائمة */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* تعديلات للشاشات الكبيرة */
+@media (min-width: 992px) {
+    .mobile-menu {
+        max-width: 350px;
+    }
+    
+    .mobile-nav-link {
+        font-size: 1.2rem;
+        padding: 18px 30px;
+    }
+}
+
+/* تعديلات للشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    .mobile-menu {
+        width: 85%;
+    }
+    
+    .mobile-nav-link {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}

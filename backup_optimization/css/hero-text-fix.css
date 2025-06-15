@@ -1,0 +1,58 @@
+/**
+ * تخصيص لتصغير حجم الخط في قسم السلايدر الرئيسي (Hero)
+ * تم تحديثه: 2025-04-08 - تصغير إضافي للخط
+ */
+
+/* تصغير حجم العنوان الرئيسي */
+.hero-title {
+    font-size: 2.7rem !important; /* تم تصغيره من 3.2rem */
+}
+
+/* تصغير حجم العنوان الفرعي */
+.hero-subtitle {
+    font-size: 1.2rem !important; /* تم تصغيره من 1.4rem */
+}
+
+/* تصغير حجم علامات الميزات */
+.hero-features .feature-tag {
+    font-size: 0.85rem !important; /* تم تصغيره من 0.9rem */
+}
+
+/* تصغير حجم علامة السعر */
+.hero-price .current-price {
+    font-size: 1.9rem !important; /* تم تصغيره من 2.1rem */
+}
+.hero-price .old-price {
+    font-size: 1.1rem !important; /* تم تصغيره من 1.3rem */
+}
+.hero-price .discount-tag {
+    font-size: 0.85rem !important; /* تم تصغيره من 0.9rem */
+}
+
+/* تصغير حجم نص الزر */
+.hero-cta-button .btn-text {
+    font-size: 1.2rem !important; /* تم تصغيره من 1.3rem */
+}
+
+/* تعديلات للشاشات المتوسطة */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.4rem !important; /* تم تصغيره من 2.8rem */
+    }
+    .hero-subtitle {
+        font-size: 1.1rem !important; /* تم تصغيره من 1.2rem */
+    }
+}
+
+/* تعديلات للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem !important; /* تم تصغيره من 2.5rem */
+    }
+    .hero-subtitle {
+        font-size: 1rem !important; /* تم تصغيره من 1.1rem */
+    }
+    .hero-features .feature-tag {
+        font-size: 0.75rem !important; /* تم تصغيره من 0.8rem */
+    }
+}
