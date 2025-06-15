@@ -143,25 +143,26 @@ function updateRecommendedSizeInline() {
     }
 }
 
-// حساب المقاس المناسب بناءً على الوزن
+// حساب المقاس المناسب بناءً على الطول والوزن
 function calculateSize(height, weight) {
-    let size = '';
-    
-    if (weight >= 65 && weight <= 75) {
-        size = 'M';
-    } else if (weight > 75 && weight <= 85) {
-        size = 'L';
-    } else if (weight > 85 && weight <= 98) {
-        size = 'XL';
-    } else if (weight > 98 && weight <= 112) {
-        size = '2XL';
-    } else if (weight > 112) {
-        size = '2XL';
-    } else {
-        size = 'M'; // Default to M for weights below 65
+    if (height >= 170 && height <= 178 && weight >= 65 && weight <= 75) {
+        return 'M';
     }
-    
-    return size;
+    if (height >= 175 && height <= 183 && weight >= 75 && weight <= 85) {
+        return 'L';
+    }
+    if (height >= 178 && height <= 188 && weight >= 85 && weight <= 98) {
+        return 'XL';
+    }
+    if (height >= 180 && height <= 192 && weight >= 98 && weight <= 112) {
+        return '2XL';
+    }
+
+    // Fallback logic if no exact match
+    if (weight < 75) return 'M';
+    if (weight < 85) return 'L';
+    if (weight < 98) return 'XL';
+    return '2XL';
 }
 
 // وظيفة لتحديث وحدات القياس
