@@ -424,12 +424,11 @@ src="https://www.facebook.com/tr?id=1731092407482872&ev=PageView&noscript=1"
                     <div class="delivery-details">
                         <div class="delivery-address">
                             <div class="address-label">عنوان التسليم</div>
-                            <div class="address-value">
-                                أحمد محمد<br>
-                                0100 000 0000<br>
-                                123 شارع التحرير<br>
-                                الدور الثالث، شقة 12<br>
-                                القاهرة، مصر
+                            <div class="address-value" id="delivery-info">
+                                <span id="customer-name">اسم العميل</span><br>
+                                <span id="customer-mobile">رقم الهاتف</span><br>
+                                <span id="customer-address">العنوان</span><br>
+                                <span id="customer-governorate">المحافظة</span>
                             </div>
                         </div>
                         <div class="delivery-time">
@@ -514,6 +513,27 @@ src="https://www.facebook.com/tr?id=1731092407482872&ev=PageView&noscript=1"
                 const totalPriceElement = document.querySelector('.total-price');
                 if (totalPriceElement) {
                     totalPriceElement.textContent = order.total_price;
+                }
+                
+                // Update delivery information
+                const customerName = document.getElementById('customer-name');
+                if (customerName) {
+                    customerName.textContent = order.customer_name;
+                }
+                
+                const customerMobile = document.getElementById('customer-mobile');
+                if (customerMobile) {
+                    customerMobile.textContent = order.customer_mobile;
+                }
+                
+                const customerAddress = document.getElementById('customer-address');
+                if (customerAddress) {
+                    customerAddress.textContent = order.customer_address;
+                }
+                
+                const customerGovernorate = document.getElementById('customer-governorate');
+                if (customerGovernorate) {
+                    customerGovernorate.textContent = order.customer_governorate;
                 }
                 
                 // Trigger conversion tracking
