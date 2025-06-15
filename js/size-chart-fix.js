@@ -143,46 +143,18 @@ function updateRecommendedSizeInline() {
     }
 }
 
-// حساب المقاس المناسب بناءً على الطول والوزن
+// حساب المقاس المناسب بناءً على الوزن
 function calculateSize(height, weight) {
     let size = '';
     
-    if (height <= 165) {
-        if (weight <= 65) {
-            size = 'M';
-        } else if (weight <= 80) {
-            size = 'L';
-        } else {
-            size = 'XL';
-        }
-    } else if (height <= 175) {
-        if (weight <= 60) {
-            size = 'M';
-        } else if (weight <= 80) {
-            size = 'L';
-        } else if (weight <= 100) {
-            size = 'XL';
-        } else {
-            size = '2XL';
-        }
-    } else if (height <= 185) {
-        if (weight <= 70) {
-            size = 'L';
-        } else if (weight <= 90) {
-            size = 'XL';
-        } else if (weight <= 110) {
-            size = '2XL';
-        } else {
-            size = '3XL';
-        }
+    if (weight <= 75) {
+        size = 'M';
+    } else if (weight <= 85) {
+        size = 'L';
+    } else if (weight <= 98) {
+        size = 'XL';
     } else {
-        if (weight <= 80) {
-            size = 'XL';
-        } else if (weight <= 100) {
-            size = '2XL';
-        } else {
-            size = '3XL';
-        }
+        size = '2XL';
     }
     
     return size;
