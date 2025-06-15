@@ -143,20 +143,22 @@ function updateRecommendedSizeInline() {
     }
 }
 
-// حساب المقاس المناسب بناءً على الوزن
+// حساب المقاس المناسب بناءً على الطول والوزن
 function calculateSize(height, weight) {
     let size = '';
-    
-    if (weight <= 75) {
+
+    if (weight < 65) {
         size = 'M';
-    } else if (weight <= 85) {
+    } else if (weight >= 65 && weight <= 75) {
+        size = 'M';
+    } else if (weight > 75 && weight <= 85) {
         size = 'L';
-    } else if (weight <= 98) {
+    } else if (weight > 85 && weight <= 98) {
         size = 'XL';
-    } else {
+    } else if (weight > 98) {
         size = '2XL';
     }
-    
+
     return size;
 }
 
