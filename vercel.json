@@ -24,6 +24,6 @@
       ]
     }
   ],
-  "buildCommand": false,
+  "buildCommand": null,
   "outputDirectory": "."
 }
