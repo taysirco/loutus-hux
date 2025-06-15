@@ -552,7 +552,47 @@ src="https://www.facebook.com/tr?id=1731092407482872&ev=PageView&noscript=1"
     </footer>
     
     <script>
-        // يمكن إضافة سكريبت لتتبع الطلب أو تحديث معلومات الطلب ديناميكيًا هنا
+        // Load order data from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderData = localStorage.getItem('lastOrder');
+            if (orderData) {
+                const order = JSON.parse(orderData);
+                
+                // Update order number
+                const orderNumberElement = document.querySelector('.info-value.highlight');
+                if (orderNumberElement) {
+                    orderNumberElement.textContent = '#' + order.order_number;
+                }
+                
+                // Update total products
+                const totalProductsElements = document.querySelectorAll('.info-value');
+                if (totalProductsElements.length > 1) {
+                    totalProductsElements[1].textContent = order.total_items + ' منتجات';
+                }
+                
+                // Update total price if element exists
+                const totalPriceElement = document.querySelector('.total-price');
+                if (totalPriceElement) {
+                    totalPriceElement.textContent = order.total_price;
+                }
+                
+                // Trigger conversion tracking
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Purchase', {
+                        value: parseFloat(order.total_price.replace(/[^\d]/g, '')),
+                        currency: 'EGP',
+                        content_ids: order.products.map(p => p.id),
+                        content_type: 'product',
+                        num_items: order.total_items
+                    });
+                }
+                
+                // Update URL with order confirmation parameter
+                const newUrl = window.location.origin + window.location.pathname +
+                              '?confirm_order=' + order.order_number;
+                window.history.replaceState({ path: newUrl }, '', newUrl);
+            }
+        });
     </script>
 </body>
 </html>

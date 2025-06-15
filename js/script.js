@@ -2572,18 +2572,17 @@ function submitOrder() {
         },
         body: JSON.stringify(orderData),
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        document.getElementById('orderNumber').textContent = orderNumber;
-        document.getElementById('successModal').classList.add('show');
-        document.getElementById('codOrderForm').reset();
-        const productsContainer = document.getElementById('selectedProductsContainer');
-        const allProducts = productsContainer.querySelectorAll('.product-item');
-        for (let i = 1; i < allProducts.length; i++) {
-            allProducts[i].remove();
+    .then(response => {
+        // Make.com might not return JSON, so we'll check the response status
+        if (response.ok) {
+            console.log('Order submitted successfully');
+            // Store order data in localStorage for the confirmation page
+            localStorage.setItem('lastOrder', JSON.stringify(orderData));
+            // Redirect to confirmation page
+            window.location.href = 'confirm.html';
+        } else {
+            throw new Error('Network response was not ok');
         }
-        updateTotalPrice();
     })
     .catch((error) => {
         console.error('Error:', error);
