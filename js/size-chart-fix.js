@@ -171,69 +171,10 @@ function updateMeasurementUnits(unit) {
     
     if (!heightSlider || !weightSlider || !heightValue || !weightValue) return;
     
-    if (unit === 'metric') {
-        // تحويل إلى النظام المتري
-        const currentHeight = heightSlider.value;
-        const currentWeight = weightSlider.value;
-        
-        if (heightSlider.getAttribute('data-unit') === 'imperial') {
-            // تحويل من إنش إلى سم
-            const metricHeight = Math.round(parseInt(currentHeight) * 2.54);
-            heightSlider.setAttribute('data-unit', 'metric');
-            heightSlider.min = 150;
-            heightSlider.max = 210;
-            heightSlider.value = metricHeight;
-            heightValue.textContent = metricHeight;
-            heightValue.nextElementSibling.textContent = 'سم';
-        }
-        
-        if (weightSlider.getAttribute('data-unit') === 'imperial') {
-            // تحويل من رطل إلى كجم
-            const metricWeight = Math.round(parseInt(currentWeight) / 2.205);
-            weightSlider.setAttribute('data-unit', 'metric');
-            weightSlider.min = 40;
-            weightSlider.max = 160;
-            weightSlider.value = metricWeight;
-            weightValue.textContent = metricWeight;
-            weightValue.nextElementSibling.textContent = 'كجم';
-        }
-        
-        // تحديث علامات المقياس للنظام المتري
-        updateSliderMarks('height', [150, 160, 170, 180, 190, 200, 210]);
-        updateSliderMarks('weight', [40, 60, 80, 100, 120, 140, 160]);
-        
-    } else if (unit === 'imperial') {
-        // تحويل إلى النظام الإمبريالي
-        const currentHeight = heightSlider.value;
-        const currentWeight = weightSlider.value;
-        
-        if (heightSlider.getAttribute('data-unit') !== 'imperial') {
-            // تحويل من سم إلى إنش
-            const imperialHeight = Math.round(parseInt(currentHeight) / 2.54);
-            heightSlider.setAttribute('data-unit', 'imperial');
-            heightSlider.min = 59;
-            heightSlider.max = 83;
-            heightSlider.value = imperialHeight;
-            heightValue.textContent = imperialHeight;
-            heightValue.nextElementSibling.textContent = 'إنش';
-        }
-        
-        if (weightSlider.getAttribute('data-unit') !== 'imperial') {
-            // تحويل من كجم إلى رطل
-            const imperialWeight = Math.round(parseInt(currentWeight) * 2.205);
-            weightSlider.setAttribute('data-unit', 'imperial');
-            weightSlider.min = 88;
-            weightSlider.max = 352;
-            weightSlider.value = imperialWeight;
-            weightValue.textContent = imperialWeight;
-            weightValue.nextElementSibling.textContent = 'رطل';
-        }
-        
-        // تحديث علامات المقياس للنظام الإمبريالي
-        updateSliderMarks('height', [59, 63, 67, 71, 75, 79, 83]);
-        updateSliderMarks('weight', [88, 132, 176, 220, 264, 308, 352]);
-    }
-    
+    // تحديث علامات المقياس للنظام المتري
+    updateSliderMarks('height', [150, 160, 170, 180, 190, 200, 210]);
+    updateSliderMarks('weight', [60, 80, 100, 120, 140, 160]);
+
     // تحديث فقاعات القيم
     updateSliderBubble(heightSlider, heightValue);
     updateSliderBubble(weightSlider, weightValue);
